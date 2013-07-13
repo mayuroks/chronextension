@@ -1,5 +1,5 @@
 func = () ->
-	alert "TEST"
+	#alert $("#a_name").val()
 	console.log("LOADED")
 	cache = new LastFMCache();
 	lastfm = new LastFM({
@@ -9,14 +9,21 @@ func = () ->
 	})
 	
 	lastfm.track.getSimilar(
-		{artist: 'way out west',track : 'spaceman' , limit: 10},
+		{artist: $("#a_name").val(),track : $("#s_name").val() , limit: 20},
 		{success: (data) ->
 				$('#sucks').append("<li><a>#{song.artist.name} - #{song.name}</a></li>") for song in data.similartracks.track
 				#alert data.similartracks.track[0].name
 				$('#sucks').listview("refresh")
-				
+				$("#a_name").val("")
+				$("#s_name").val("")
 		},
 		{error:	(code,message) ->
 				## Show error message
 		})
+
+clickHandler = () ->
+	func()
+
+document.addEventListener 'DOMContentLoaded', () ->
+	document.querySelector('button').addEventListener('click', clickHandler)
 
