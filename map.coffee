@@ -1,4 +1,5 @@
-$ ->
+func = () ->
+	alert "TEST"
 	console.log("LOADED")
 	cache = new LastFMCache();
 	lastfm = new LastFM({
