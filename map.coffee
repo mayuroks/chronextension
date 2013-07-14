@@ -24,6 +24,6 @@ func = () ->
 clickHandler = () ->
 	func()
 
-document.addEventListener 'DOMContentLoaded', () ->
-	document.querySelector('button').addEventListener('click', clickHandler)
-
+$ ->
+	console.log("LOADED")
+	$("#sub").bind 'click', clickHandler
