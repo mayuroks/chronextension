@@ -29,9 +29,20 @@ reset_handle = () ->
 	$('#sucks').remove()
 	$('#sucks').listview("refresh")
 
+http_handle = () ->
+	$.ajax "http://www.mrtzcmp3.net/snow_patrol_chasing_cars_1s.html",
+		success: (data, textStatus, jqXHR) ->
+			alert data.match(/D\?.*?_/)
+			#alert "SUCCESS HTTP REQUEST"
+			console.log("HTTP REQUEST")
+		error: (jqXHR, textStatus, errorThrown) ->
+			alert textStatus + " FAILED HTTP " + errorThrown 
+			console.log("FAILED REQUEST")
+
 $ ->
 	console.log("LOADED")
 	$("#sub").click func
 	$("#reset").click reset_handle
-
+	$("#test").click http_handle
+	
 
