@@ -1,8 +1,8 @@
 {
-    "name": "Drive Button",
+    "name": "Similar Music Download",
     "version": "1.0",
     "manifest_version": 2,
-    "description": "Open Google Drive",
+    "description": "Experimental",
     "browser_action": {
         "default_icon": "icon.png"
     },
@@ -13,7 +13,6 @@
    "content_security_policy": "script-src 'self' https://ws.audioscrobbler.com; object-src 'self'", 
    "permissions": [
 	"tabs",
-	'downloads',
 	"http://www.mrtzcmp3.net/*"
     ]
 }
