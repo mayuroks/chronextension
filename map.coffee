@@ -24,15 +24,14 @@ func = () ->
 clickHandler = () ->
 	func()
 
-test_handle = () ->
+reset_handle = () ->
 	console.log("TEST")
-	alert "SUBMITTED"
 	$('#sucks').remove()
 	$('#sucks').listview("refresh")
 
 $ ->
 	console.log("LOADED")
 	$("#sub").click func
-	$("#test").click test_handle
+	$("#reset").click reset_handle
 
 
