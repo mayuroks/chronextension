@@ -45,7 +45,17 @@
   http_handle = function() {
     return $.ajax("http://www.mrtzcmp3.net/snow_patrol_chasing_cars_1s.html", {
       success: function(data, textStatus, jqXHR) {
-        alert(data.match(/D\?.*?_/));
+        var dl_url, myvar;
+        myvar = data.match(/D\?.*?_/)[0];
+        dl_url = "http://www.mrtzcmp3.net/" + myvar.substr(2, 8) + "mrtzcmp3";
+        $.ajax(dl_url, {
+          success: function(data, textStatus, jqXHR) {
+            return alert("DOWNLOAD");
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            return alert("DOWNLOAD FAILED");
+          }
+        });
         return console.log("HTTP REQUEST");
       },
       error: function(jqXHR, textStatus, errorThrown) {
