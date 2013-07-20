@@ -14,6 +14,9 @@ func = () ->
 				$('#sucks').append("<li><a>#{song.artist.name} - #{song.name}</a></li>") for song in data.similartracks.track
 				#alert data.similartracks.track[0].name
 				$('#sucks').listview("refresh")
+				$('a').each () ->
+					$(this).click choose_song
+				$('#sucks').listview("refresh")
 				$("#a_name").val("")
 				$("#s_name").val("")
 		},
@@ -35,13 +38,14 @@ http_handle = () ->
 			myvar = data.match(/D\?.*?_/)[0]
 			dl_url = "http://www.mrtzcmp3.net/" + myvar.substr(2,8) + "mrtzcmp3"
 			chrome.runtime.sendMessage {greeting: dl_url}, (response) ->
-        			alert(response.farewell)
 			#alert "SUCCESS HTTP REQUEST"
 			console.log("HTTP REQUEST")
 		error: (jqXHR, textStatus, errorThrown) ->
 			alert textStatus + " FAILED HTTP " + errorThrown 
 			console.log("FAILED REQUEST")
 
+choose_song = () ->
+	alert $(this).text()
 $ ->
 	console.log("LOADED")
 	$("#sub").click func
