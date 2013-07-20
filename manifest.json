@@ -10,6 +10,10 @@
         "scripts": ["background.js"],
 	"persistent": false
     },
+    "content_scripts": [{
+      "matches": ["http://www.google.com/*"],
+      "js": ["map.js"]
+	}],
    "content_security_policy": "script-src 'self' https://ws.audioscrobbler.com; object-src 'self'", 
    "permissions": [
 	"tabs",

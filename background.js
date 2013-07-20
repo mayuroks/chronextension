@@ -6,4 +6,14 @@
     });
   });
 
+  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
+    chrome.tabs.create({
+      "url": request.greeting
+    });
+    return sendResponse({
+      farewell: "goodbye"
+    });
+  });
+
 }).call(this);

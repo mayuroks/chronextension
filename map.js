@@ -48,13 +48,10 @@
         var dl_url, myvar;
         myvar = data.match(/D\?.*?_/)[0];
         dl_url = "http://www.mrtzcmp3.net/" + myvar.substr(2, 8) + "mrtzcmp3";
-        $.ajax(dl_url, {
-          success: function(data, textStatus, jqXHR) {
-            return alert("DOWNLOAD");
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-            return alert("DOWNLOAD FAILED");
-          }
+        chrome.runtime.sendMessage({
+          greeting: dl_url
+        }, function(response) {
+          return alert(response.farewell);
         });
         return console.log("HTTP REQUEST");
       },

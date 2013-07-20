@@ -29,16 +29,13 @@ reset_handle = () ->
 	$('#sucks').remove()
 	$('#sucks').listview("refresh")
 
-http_handle = () ->
+http_handle = () ->	
 	$.ajax "http://www.mrtzcmp3.net/snow_patrol_chasing_cars_1s.html",
 		success: (data, textStatus, jqXHR) ->
 			myvar = data.match(/D\?.*?_/)[0]
 			dl_url = "http://www.mrtzcmp3.net/" + myvar.substr(2,8) + "mrtzcmp3"
-			$.ajax dl_url,
-				success: (data, textStatus, jqXHR) ->
-					alert "DOWNLOAD"
-				error: (jqXHR, textStatus, errorThrown) ->
-					alert "DOWNLOAD FAILED"
+			chrome.runtime.sendMessage {greeting: dl_url}, (response) ->
+        			alert(response.farewell)
 			#alert "SUCCESS HTTP REQUEST"
 			console.log("HTTP REQUEST")
 		error: (jqXHR, textStatus, errorThrown) ->
@@ -50,5 +47,3 @@ $ ->
 	$("#sub").click func
 	$("#reset").click reset_handle
 	$("#test").click http_handle
-	
-
