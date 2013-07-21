@@ -45,7 +45,10 @@ http_handle = () ->
 			console.log("FAILED REQUEST")
 
 choose_song = () ->
-	alert $(this).text()
+	alert $(this).text().replace(/-/ ,"").replace(/\s+/g ,"_")
+	#name = "rihanna  dont stop    music"
+        #words = name.replace(/\s+/g ,"_")
+        #alert words
 $ ->
 	console.log("LOADED")
 	$("#sub").click func

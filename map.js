@@ -65,7 +65,7 @@
   };
 
   choose_song = function() {
-    return alert($(this).text());
+    return alert($(this).text().replace(/-/, "").replace(/\s+/g, "_"));
   };
 
   $(function() {
